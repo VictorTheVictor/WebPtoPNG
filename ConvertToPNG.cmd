@@ -9,11 +9,11 @@ if not exist %im_path% (
 )
 
 set counter=0
-set maxCounter = 99
+REM set maxCounter = 99
 set "image_path=%~1"
 set "output_path=%~dpn1.png"
 
-if not exist "%output_path%" (
+if not exist "%image_path%" (
 	echo Please supply the .webp file. This is not meant to be run as a standalone script.
 	pause
 	exit
@@ -30,10 +30,10 @@ exit
 :counterTick
 set /a counter+=1
 set "output_path=%~dpn1_%counter%.png"
-if not %counter% GTR %maxCounter% (
+if %counter% LSS 99 (
 	goto loop
 ) else (
-	echo Maximum counter loops reached. If you want to change this behavior, edit the maxCounter variable in this script's file with Notepad/++
+	echo Maximum counter loops reached. If you want to change this behavior, edit the functions above this line in this script's file with Notepad/++
 	pause
 	exit
 )
